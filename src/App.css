@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+JP:wght@700&family=Yomogi&display=swap');
+
+body {
+  background-color: #445d6188;
+}
+
+header {
+  margin: 20px;
+}
+
+.App {
+  text-align: center;
+  height:100vh;
+  padding: 20px;
+}
+
+.title-logo {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: 'Sacramento', cursive;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-family: 'Yomogi';
+}
+
+nav .menu-item {
+  color: rgb(85, 85, 85);
+  margin: 5px;
+  text-decoration: none;
+}
+
+nav .menu-item.selected {
+  color: black;
+}
+
+.scrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer {
+  margin: 20px;
+}
+
+footer .container {
+  display: flex;
+  justify-content: center;
+}
+
+/*
+footer .item1 { flex-grow: 1 }
+footer .item2 { flex-grow: 1 }
+footer .item3 { flex-grow: 1 }*/

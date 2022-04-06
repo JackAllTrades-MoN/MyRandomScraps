@@ -1,0 +1,53 @@
+*[class^="paper-box"] {
+    margin: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .5);
+}
+
+*[class^="paper-box"]:hover {
+    box-shadow: 0 10px 5px 0 rgba(0, 0, 0, .5);
+    cursor: pointer;
+}
+
+.paper-box1 {
+    width: 220px;
+    height: 220px;
+    background-color: white;
+    border-radius: 0% 100% 12% 88% / 69% 0% 100% 31%;
+    background-image: linear-gradient(90deg, transparent 0%, transparent 50%, #fff 50%, #fff 100%),
+                      linear-gradient(180deg, #ccc 1px, transparent 1px);
+    background-size: 8px 100%, 100% 2.5em;
+    line-height: 2.5em;
+    padding-bottom: 1px;
+}
+  
+.paper-box2 {
+    width: 220px;
+    height: 220px;
+    background-color: white;
+    border-radius: 25% 75% 12% 88% / 85% 28% 72% 15%;
+    background-image: linear-gradient(90deg, transparent 0%, transparent 50%, #fff 50%, #fff 100%),
+    linear-gradient(180deg, #ccc 1px, transparent 1px);
+    background-size: 8px 100%, 100% 2.5em;
+    line-height: 2.5em;
+    padding-bottom: 1px;
+}
+
+.bg-img {
+    width: 150%;
+}
+
+.paper-caption {
+    font-family: 'Yomogi', cursive;
+    font-weight: bold;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    width: 80%;
+    height: 60%;
+    text-align: center;
+    position: absolute;
+}
