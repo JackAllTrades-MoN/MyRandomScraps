@@ -1,10 +1,11 @@
 import { Fragment, MouseEventHandler } from 'react';
 import './Paper.css';
+import { Dynamic, Static } from '../api';
 
 interface Props {
     paperType?: string
     caption?: string
-    cover?: string
+    cover?: Dynamic | Static
     onClick?: MouseEventHandler<HTMLDivElement>
 }
 
@@ -24,7 +25,11 @@ export const Paper = (props: Props) => {
              ? <div className="paper-caption">{props.caption}</div>
              : <Fragment></Fragment>}
             {(props.cover)
-             ? <img className="bg-img" src={props.cover}/>
+             ? <img className="bg-img" src={
+                (props.cover.kind==="dynamic")
+                ? props.cover.cover
+                : props.cover.url
+            }/>
              : <Fragment></Fragment>}
         </div>
     )

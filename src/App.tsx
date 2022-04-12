@@ -1,7 +1,8 @@
 import './App.css';
 import { Footer } from './footer/Footer';
 import { Link, Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getCategories } from './api';
 
 function App() {
   const [selected, setSelected] = useState<string|null>(null);
@@ -11,16 +12,41 @@ function App() {
   const classNameOf = (name: string) => {
     return (selected === name)?"menu-item selected":"menu-item"
   }
+  const [categories, setCategories] = useState<string[]>([]);
+  useEffect(() => {
+    getCategories()
+    .then(res => {
+      const {data, status} = res;
+      setCategories(data);
+    })
+  }, []);
+  const toCamelCase = (words: string) => {
+    return words.split("-")
+      .map(word => word[0].toUpperCase() + word.slice(1))
+      .join("-")
+  }
   return (
     <div className="App">
       <header className="App-header">
         <div className='title-logo'>My Random Scraps</div>
         <nav>
-          <Link className={classNameOf("home")} to="/" onClick={select("home")}>Home</Link>
-          <Link className={classNameOf("techA")} to="/?filter=techA" onClick={select("techA")}>Tech-Articles</Link>
-          <Link className={classNameOf("softwares")} to="/?filter=softwares" onClick={select("softwares")}>Softwares</Link>
-          <Link className={classNameOf("illustrations")} to="/?filter=illustrations" onClick={select("illustrations")}>Illustrations</Link>
-          <Link className={classNameOf("links")} to="/?filter=links" onClick={select("links")}>Links</Link>
+          <Link className={classNameOf("home")}
+          to="/"
+          onClick={select("home")}>
+            Home
+          </Link>
+          {categories.map((category, idx) => {
+            return (
+              <Link
+                key={idx}
+                className={classNameOf(category)}
+                to={`/?filter=${category}`}
+                onClick={select(category)}
+              >
+                {toCamelCase(category)}
+              </Link>
+            )
+          })}
         </nav>
       </header>
       <Outlet />

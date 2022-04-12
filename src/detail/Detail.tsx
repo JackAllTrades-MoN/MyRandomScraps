@@ -5,7 +5,7 @@ import { getDetail, DetailRecord } from '../api';
 
 const lbToBr = (txt: any) => {
     return (
-        txt.split(/(\n)/g).map((t: any) => (t === '\n')?<br/>:t)
+        txt.split(/(\n)/g).map((t: any, idx: number) => (t === '\n')?<br key={idx}/>:t)
     )
 }
 
@@ -16,7 +16,10 @@ export const Detail = () => {
         if (params.detail_id) {
             const did = parseInt(params.detail_id);
             getDetail(did)
-            .then(detailRecord => setDetailRecord(detailRecord))
+            .then(res => {
+                const {data, status} = res;
+                setDetailRecord(data);
+            });
         }
     }, [])
     if (detailRecord) {
