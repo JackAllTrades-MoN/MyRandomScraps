@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const API_LOCATION =
     (process.env.NODE_ENV === "development")
-    ? "http://192.168.100.230:3030"
-    : "http://120.74.172.230:3030";
+    ? "http://192.168.100.230"
+    : "https://scraps.f5.si";
 
 export interface Scrap {
     id: number
